@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: sc-provider
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+      instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+      ip-address: true
+    config:
+      discovery:
+        enabled: true
+        service-id: sc-config-server
+      fail-fast: true
+      username: root
+      password: booszy
+      profile: csdn
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      percentage: 1.0

@@ -1,0 +1,17 @@
+server:
+  port: 8900
+turbine:
+  aggregator:
+    clusterConfig: default
+  appConfig: sc-consumer
+  clusterNameExpression: "'default'"
+spring:
+  application:
+    name: sc-dashboard
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+      instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+      ip-address: true
